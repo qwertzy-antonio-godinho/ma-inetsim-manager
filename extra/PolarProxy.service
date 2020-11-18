@@ -1,0 +1,13 @@
+[Unit]
+Description=PolarProxy TLS pcap logger
+After=network.target
+
+[Service]
+Type=simple
+User=proxyuser
+WorkingDirectory=/home/proxyuser/PolarProxy
+ExecStart=/home/proxyuser/PolarProxy/PolarProxy -v -p 10443,80,80 -p 10465,25,25 -p 10993,143,143 -p 10995,110,110 -p 10990,21,21 -x /var/log/PolarProxy/polarproxy.cer -f /var/log/PolarProxy/proxyflows.log --certhttp 10080 --insecure --pcapoverip 57012 --terminate --connect 192.168.100.10 --nosni nosni.malwarenet.org 
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
