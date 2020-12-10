@@ -7,18 +7,18 @@ function main () {
 	local value_session="$4"
 
 	# IRC
-	iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 6667 -j REDIRECT --to-port 16667
-	iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 6668 -j REDIRECT --to-port 16667
-	iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 6669 -j REDIRECT --to-port 16667
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 6667 -j REDIRECT --to-port 16667
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 6668 -j REDIRECT --to-port 16667
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 6669 -j REDIRECT --to-port 16667
 
 	# HTTPS
-	iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 443 -j REDIRECT --to-port 8443
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 443 -j REDIRECT --to-port 8443
 
 	# SMTP
-	iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 465 -j REDIRECT --to-port 8465
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 465 -j REDIRECT --to-port 8465
 
 	# ALL OTHER TRAFFIC
-	iptables -t nat -A PREROUTING -i eth1 -j REDIRECT
+	iptables -t nat -A PREROUTING -i enp0s8 -j REDIRECT
 
 	if (systemctl is-active ntp.service &>/dev/null) ; then
 		systemctl stop ntp.service
