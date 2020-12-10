@@ -37,7 +37,7 @@ function service_manager () {
 								nc localhost 57012 > "$datastream" &
 
 								# Wireshark <- data from pipe
-								#tail -f -c +0 "$datastream" | wireshark -k -i - &
+								tail -f -c +0 "$datastream" | wireshark -k -i - &
 							fi
 					    ;;
 						*) 
