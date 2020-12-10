@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CWD=$"/lab/automate/engine/inetsim"
+CWD=$"/lab/tools/inetsim/engine/inetsim"
 NOW=$(date +"%Y%m%d%H%M%S")
 REPORT="/lab/data"
 CONFIG="/lab/tools/inetsim/inetsim-"
